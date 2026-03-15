@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -20,145 +21,180 @@
 --whatsapp:#25d366;
 }
 
+*{
+box-sizing:border-box;
+}
+
 body{
+
 margin:0;
 font-family:Poppins;
 background:var(--bg);
 color:white;
+display:flex;
+justify-content:center;
+
 }
 
-.container{
+.app{
+
 width:100%;
+max-width:500px;
 min-height:100vh;
 display:flex;
 flex-direction:column;
-align-items:center;
+
 }
 
-.top-logo{
-text-align:center;
-padding:25px 0 10px 0;
+.top-bar{
+
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px 0;
+
 }
 
-.top-logo img{
-width:90px;
-height:90px;
+.top-bar img{
+
+width:70px;
+height:70px;
 border-radius:50%;
+
 }
 
 .timer{
+
 text-align:center;
-margin-top:10px;
+padding:10px;
+
 }
 
 #countdown{
-font-size:2.4rem;
+
+font-size:2.6rem;
 color:var(--whatsapp);
 font-weight:600;
+
 }
 
 #next-vakit-name{
-font-size:0.8rem;
+
+font-size:0.85rem;
 color:var(--dim);
-margin-bottom:5px;
+
 }
 
 .vakit-bar{
+
 display:grid;
 grid-template-columns:repeat(5,1fr);
-width:100%;
-max-width:500px;
 text-align:center;
 font-size:0.7rem;
-margin-top:15px;
+padding:15px 10px;
+
 }
 
 .vakit-item b{
+
 display:block;
 font-size:0.9rem;
+
 }
 
 .active-vakit b{
+
 color:var(--whatsapp);
-}
 
-.nav-tabs{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-width:90%;
-max-width:500px;
-margin-top:20px;
-}
-
-.nav-btn{
-background:#1c2126;
-border:none;
-padding:16px;
-border-radius:15px;
-color:white;
-font-weight:600;
-cursor:pointer;
-}
-
-.nav-btn.active{
-background:linear-gradient(135deg,#1b4332,#2d6a4f);
 }
 
 .content{
+
+flex:1;
 text-align:center;
 padding:25px;
-max-width:500px;
+
 }
 
 #kat-etiket{
+
 color:var(--whatsapp);
 font-weight:600;
-margin-bottom:10px;
+margin-bottom:12px;
+
 }
 
 #ana-metin{
+
 font-family:Amiri;
-font-size:1.8rem;
-line-height:1.6;
+font-size:1.9rem;
+line-height:1.7;
+
 }
 
 #kaynak{
-margin-top:10px;
+
+margin-top:12px;
 color:var(--dim);
+
 }
 
 .refresh-btn{
+
 background:var(--green);
 border:none;
-padding:12px 25px;
+padding:12px 28px;
 border-radius:30px;
 color:white;
+font-weight:600;
 margin-top:20px;
 cursor:pointer;
+
+}
+
+.nav-tabs{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+padding:15px;
+
+}
+
+.nav-btn{
+
+background:#1c2126;
+border:none;
+padding:14px;
+border-radius:12px;
+color:white;
 font-weight:600;
+cursor:pointer;
+
 }
 
-.community{
-text-align:center;
-margin-top:auto;
-padding:30px 20px 40px 20px;
+.nav-btn.active{
+
+background:linear-gradient(135deg,#1b4332,#2d6a4f);
+
 }
 
-.club-logo{
-width:80px;
-height:80px;
-border-radius:50%;
-margin-bottom:15px;
-}
+.whatsapp-bar{
 
-.invite-btn{
 background:var(--whatsapp);
-padding:12px 28px;
-border-radius:40px;
+text-align:center;
+padding:18px;
+font-size:1.1rem;
+font-weight:600;
+
+}
+
+.whatsapp-bar a{
+
 color:white;
 text-decoration:none;
-font-weight:600;
+display:block;
+
 }
 
 </style>
@@ -167,15 +203,20 @@ font-weight:600;
 
 <body>
 
-<div class="container">
+<div class="app">
 
-<div class="top-logo">
+<div class="top-bar">
+
 <img src="https://pbs.twimg.com/profile_images/971805360360128512/KinPUY9i_400x400.jpg">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s">
+
 </div>
 
 <div class="timer">
 
 <div id="next-vakit-name">VAKTE KALAN</div>
+
 <div id="countdown">00:00:00</div>
 
 </div>
@@ -187,15 +228,6 @@ font-weight:600;
 <div class="vakit-item" id="i-Asr">İkindi<b id="v-ikindi">--:--</b></div>
 <div class="vakit-item" id="i-Maghrib">Akşam<b id="v-aksam">--:--</b></div>
 <div class="vakit-item" id="i-Isha">Yatsı<b id="v-yatsi">--:--</b></div>
-
-</div>
-
-<div class="nav-tabs">
-
-<button class="nav-btn active" onclick="tabDegistir('ayetler',this)">Ayet</button>
-<button class="nav-btn" onclick="tabDegistir('hadisler',this)">Hadis</button>
-<button class="nav-btn" onclick="tabDegistir('sahabeler',this)">Sahabe</button>
-<button class="nav-btn" onclick="tabDegistir('dualar',this)">Dua</button>
 
 </div>
 
@@ -213,14 +245,19 @@ Değiştir
 
 </div>
 
-<div class="community">
+<div class="nav-tabs">
 
-<img class="club-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s">
+<button class="nav-btn active" onclick="tabDegistir('ayetler',this)">Ayet</button>
+<button class="nav-btn" onclick="tabDegistir('hadisler',this)">Hadis</button>
+<button class="nav-btn" onclick="tabDegistir('sahabeler',this)">Sahabe</button>
+<button class="nav-btn" onclick="tabDegistir('dualar',this)">Dua</button>
 
-<br>
+</div>
 
-<a href="https://chat.whatsapp.com/EqjGZOCxmr9IgJHyK5zjul?mode=gi_t" target="_blank" class="invite-btn">
-Bize Katıl
+<div class="whatsapp-bar">
+
+<a href="https://chat.whatsapp.com/EqjGZOCxmr9IgJHyK5zjul?mode=gi_t" target="_blank">
+WhatsApp Grubuna Katıl
 </a>
 
 </div>
@@ -243,7 +280,6 @@ dualar:"Günün Duası"
 async function vakitCek(){
 
 const d=new Date()
-
 const date=d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear()
 
 const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Adana&country=Turkey&method=13&date=${date}`)
@@ -281,17 +317,12 @@ let next=null
 for(let v of vList){
 
 let vt=new Date()
-
 const[h,m]=v.t.split(":")
-
 vt.setHours(h,m,0)
 
 if(vt>now){
-
 next={v:v,z:vt}
-
 break
-
 }
 
 }
@@ -299,13 +330,9 @@ break
 if(!next){
 
 let vt=new Date()
-
 const[h,m]=vList[0].t.split(":")
-
 vt.setDate(vt.getDate()+1)
-
 vt.setHours(h,m,0)
-
 next={v:vList[0],z:vt}
 
 }
@@ -321,7 +348,6 @@ document.getElementById("countdown").innerText=`${h}:${m}:${s}`
 document.getElementById("next-vakit-name").innerText=next.v.n+" VAKTİNE KALAN"
 
 document.querySelectorAll(".vakit-item").forEach(el=>el.classList.remove("active-vakit"))
-
 document.getElementById(next.v.id).classList.add("active-vakit")
 
 }
@@ -353,7 +379,6 @@ gunlukSabitGetir(kat)
 function gunlukSabitGetir(kat){
 
 const l=veriler[kat]
-
 if(!l)return
 
 const d=new Date()
@@ -370,9 +395,7 @@ document.getElementById("kaynak").innerText=s.kaynak||s.isim||""
 function rastgeleGetir(kat){
 
 const l=veriler[kat]
-
 const r=Math.floor(Math.random()*l.length)
-
 const s=l[r]
 
 document.getElementById("ana-metin").innerText=s.metin||s.bilgi
@@ -381,7 +404,6 @@ document.getElementById("kaynak").innerText=s.kaynak||s.isim||""
 }
 
 vakitCek()
-
 verileriGetir()
 
 </script>
