@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>İlim Köşesi</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
 <style>
-
 :root{
 --bg:#0b0e11;
 --card:#15191d;
@@ -20,102 +14,64 @@
 --dim:#adb5bd;
 --whatsapp:#25d366;
 }
-
-*{
-box-sizing:border-box;
-}
-
+*{box-sizing:border-box;}
 body{
-
 margin:0;
 font-family:Poppins;
 background:var(--bg);
 color:white;
 display:flex;
 justify-content:center;
-
 }
-
 .app{
-
 width:100%;
 max-width:500px;
 padding:10px;
-
 }
-
 .top-bar{
-
 text-align:center;
 padding:10px 0;
-
 }
-
 .top-bar img{
-
 width:85px;
 height:85px;
 border-radius:50%;
-
 }
-
 .timer{
-
 text-align:center;
 margin-top:10px;
-
 }
-
 #countdown{
-
 font-size:2.5rem;
 color:var(--whatsapp);
 font-weight:600;
-
 }
-
 #next-vakit-name{
-
 font-size:0.85rem;
 color:var(--dim);
-
 }
-
 .vakit-bar{
-
 display:grid;
 grid-template-columns:repeat(5,1fr);
 text-align:center;
 font-size:0.75rem;
 padding:15px 5px;
-
 }
-
 .vakit-item b{
-
 display:block;
 font-size:0.9rem;
-
 }
-
 .active-vakit b{
-
 color:var(--whatsapp);
-
 }
-
 .nav-tabs{
-
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:10px;
 margin-top:10px;
 margin-bottom:10px;
-
 }
-
 .nav-btn{
-
 background:#1c2126;
 border:none;
 padding:16px;
@@ -124,47 +80,29 @@ color:white;
 font-weight:600;
 font-size:0.95rem;
 cursor:pointer;
-
 }
-
 .nav-btn.active{
-
 background:linear-gradient(135deg,#1b4332,#2d6a4f);
-
 }
-
 .content{
-
 text-align:center;
 padding:15px;
-
 }
-
 #kat-etiket{
-
 color:var(--whatsapp);
 font-weight:600;
 margin-bottom:8px;
-
 }
-
 #ana-metin{
-
 font-family:Amiri;
 font-size:1.8rem;
 line-height:1.7;
-
 }
-
 #kaynak{
-
 margin-top:10px;
 color:var(--dim);
-
 }
-
 .refresh-btn{
-
 background:var(--green);
 border:none;
 padding:12px 28px;
@@ -173,11 +111,8 @@ color:white;
 font-weight:600;
 margin-top:15px;
 cursor:pointer;
-
 }
-
 .whatsapp-bar{
-
 background:var(--whatsapp);
 text-align:center;
 padding:18px;
@@ -185,88 +120,68 @@ font-size:1.1rem;
 font-weight:600;
 margin-top:15px;
 border-radius:12px;
-
 }
-
 .whatsapp-bar a{
-
 color:white;
 text-decoration:none;
 display:block;
-
 }
-
 </style>
-
 </head>
-
 <body>
-
 <div class="app">
 
+<!-- Kulüp logosu -->
 <div class="top-bar">
-
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5kDqyb7ISRa7uW-xKuMKc0YuEadhUjs7p2Q&s">
-
 </div>
 
+<!-- Geri sayım -->
 <div class="timer">
-
 <div id="next-vakit-name">VAKTE KALAN</div>
-
 <div id="countdown">00:00:00</div>
-
 </div>
 
+<!-- Vakit çubuğu -->
 <div class="vakit-bar">
-
 <div class="vakit-item" id="i-Fajr">İmsak<b id="v-imsak">--:--</b></div>
 <div class="vakit-item" id="i-Dhuhr">Öğle<b id="v-ogle">--:--</b></div>
 <div class="vakit-item" id="i-Asr">İkindi<b id="v-ikindi">--:--</b></div>
 <div class="vakit-item" id="i-Maghrib">Akşam<b id="v-aksam">--:--</b></div>
 <div class="vakit-item" id="i-Isha">Yatsı<b id="v-yatsi">--:--</b></div>
-
 </div>
 
-<div class="nav-tabs">
+<!-- Günün ayeti -->
+<div class="content">
+<div id="kat-etiket">Günün Ayeti</div>
+<p id="ana-metin">Yükleniyor...</p>
+<div id="kaynak"></div>
 
+<!-- Kategoriler günün ayeti altında 2x2 -->
+<div class="nav-tabs">
 <button class="nav-btn active" onclick="tabDegistir('ayetler',this)">Ayet</button>
 <button class="nav-btn" onclick="tabDegistir('hadisler',this)">Hadis</button>
 <button class="nav-btn" onclick="tabDegistir('sahabeler',this)">Sahabe</button>
 <button class="nav-btn" onclick="tabDegistir('dualar',this)">Dua</button>
-
 </div>
 
-<div class="content">
-
-<div id="kat-etiket">Günün Ayeti</div>
-
-<p id="ana-metin">Yükleniyor...</p>
-
-<div id="kaynak"></div>
-
+<!-- Yeni/Değiştir butonu -->
 <button class="refresh-btn" onclick="rastgeleGetir(aktifKategori)">
 Değiştir
 </button>
-
 </div>
 
+<!-- WhatsApp -->
 <div class="whatsapp-bar">
-
 <a href="https://chat.whatsapp.com/EqjGZOCxmr9IgJHyK5zjul?mode=gi_t" target="_blank">
-WhatsApp Grubuna Katıl
+Hadi iyiliği yayalım!
 </a>
-
-</div>
-
 </div>
 
 <script>
-
 let vakitler={}
 let veriler={}
 let aktifKategori="ayetler"
-
 const katIsimleri={
 ayetler:"Günün Ayeti",
 hadisler:"Günün Hadisi",
@@ -274,33 +189,25 @@ sahabeler:"Günün Sahabesi",
 dualar:"Günün Duası"
 }
 
+// Vakit çekme
 async function vakitCek(){
-
 const d=new Date()
 const date=d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear()
-
 const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Adana&country=Turkey&method=13&date=${date}`)
-
 const data=await res.json()
-
 vakitler=data.data.timings
-
 document.getElementById("v-imsak").innerText=vakitler.Fajr
 document.getElementById("v-ogle").innerText=vakitler.Dhuhr
 document.getElementById("v-ikindi").innerText=vakitler.Asr
 document.getElementById("v-aksam").innerText=vakitler.Maghrib
 document.getElementById("v-yatsi").innerText=vakitler.Isha
-
 setInterval(updateCountdown,1000)
-
 }
 
+// Geri sayım
 function updateCountdown(){
-
 if(!vakitler.Fajr)return
-
 const now=new Date()
-
 const vList=[
 {n:"İMSAK",t:vakitler.Fajr,id:"i-Fajr"},
 {n:"ÖĞLE",t:vakitler.Dhuhr,id:"i-Dhuhr"},
@@ -308,108 +215,67 @@ const vList=[
 {n:"AKŞAM",t:vakitler.Maghrib,id:"i-Maghrib"},
 {n:"YATSI",t:vakitler.Isha,id:"i-Isha"}
 ]
-
 let next=null
-
 for(let v of vList){
-
 let vt=new Date()
 const[h,m]=v.t.split(":")
 vt.setHours(h,m,0)
-
-vt.setMinutes(vt.getMinutes()-2)
-
-if(vt>now){
-
-next={v:v,z:vt}
-break
-
+vt.setMinutes(vt.getMinutes()-2) // 2 dk fark düzeltme
+if(vt>now){next={v:v,z:vt};break;}
 }
-
-}
-
 if(!next){
-
 let vt=new Date()
 const[h,m]=vList[0].t.split(":")
 vt.setDate(vt.getDate()+1)
 vt.setHours(h,m,0)
 vt.setMinutes(vt.getMinutes()-2)
-
 next={v:vList[0],z:vt}
-
 }
-
 const diff=next.z-now
-
 const h=Math.floor(diff/3600000).toString().padStart(2,"0")
 const m=Math.floor((diff%3600000)/60000).toString().padStart(2,"0")
 const s=Math.floor((diff%60000)/1000).toString().padStart(2,"0")
-
 document.getElementById("countdown").innerText=`${h}:${m}:${s}`
-
 document.getElementById("next-vakit-name").innerText=next.v.n+" VAKTİNE KALAN"
-
 document.querySelectorAll(".vakit-item").forEach(el=>el.classList.remove("active-vakit"))
 document.getElementById(next.v.id).classList.add("active-vakit")
-
 }
 
+// Günlük içerik
 async function verileriGetir(){
-
 const res=await fetch("https://api.npoint.io/94a7d4f2e4d98725a67c")
-
 veriler=await res.json()
-
 gunlukSabitGetir("ayetler")
-
 }
 
 function tabDegistir(kat,el){
-
 aktifKategori=kat
-
 document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"))
-
 el.classList.add("active")
-
 document.getElementById("kat-etiket").innerText=katIsimleri[kat]
-
 gunlukSabitGetir(kat)
-
 }
 
 function gunlukSabitGetir(kat){
-
 const l=veriler[kat]
 if(!l)return
-
 const d=new Date()
-
 const dayIndex=(d.getDate()+d.getMonth()*31)%l.length
-
 const s=l[dayIndex]
-
 document.getElementById("ana-metin").innerText=s.metin||s.bilgi
 document.getElementById("kaynak").innerText=s.kaynak||s.isim||""
-
 }
 
 function rastgeleGetir(kat){
-
 const l=veriler[kat]
 const r=Math.floor(Math.random()*l.length)
 const s=l[r]
-
 document.getElementById("ana-metin").innerText=s.metin||s.bilgi
 document.getElementById("kaynak").innerText=s.kaynak||s.isim||""
-
 }
 
 vakitCek()
 verileriGetir()
-
 </script>
-
 </body>
 </html>
